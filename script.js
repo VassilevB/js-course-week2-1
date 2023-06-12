@@ -4,7 +4,7 @@ const MAX_NUMBER_OF_HITS    = 4;
 var isRobotTurnedOn         = true;
 var numberOfAvailableHits   = MAX_NUMBER_OF_HITS;
 
-while(isRobotTurnedOn) { // превод "въртѝ ми го безкрай"
+while(isRobotTurnedOn) {                                                                            // превод "въртѝ ми го безкрай" а.к.а. ЦИКЪЛ С ПРЕДУСЛОВИЕ
 
     const objectInFrontOfMe = prompt(`Какъв обект има пред мен?`);
 
@@ -32,8 +32,22 @@ while(isRobotTurnedOn) { // превод "въртѝ ми го безкрай"
     const IsBatteryFull     = numberOfAvailableHits > 0;
 
     if(!IsBatteryFull) {
-        alert(`Свърши ми тока`);
-        isRobotTurnedOn = false; // или вместо този ред може break;
+        alert(`Свърши ми тока, отивам да зареждам`);
+
+        do {                                                                                        // ЦИКЪЛ СЪС СЛЕДУСЛОВИЕ, изпълнява се поне веднъж
+        const phaseCoefficient  = Math.floor(Math.random() * (1000 - 1) + 1);
+        const zeroCoefficient   = Math.floor(Math.random() * (1000 - 1) + 1);
+
+        if (phaseCoefficient > zeroCoefficient) {
+            numberOfAvailableHits = MAX_NUMBER_OF_HITS;
+        }
+
+        if (phaseCoefficient < zeroCoefficient) {
+            isRobotTurnedOn = false; // или вместо този ред може break;
+        }
+    }
+    while (phaseCoefficient == zeroCoefficient);
+
     }
 
     // task 2.3
@@ -43,9 +57,29 @@ while(isRobotTurnedOn) { // превод "въртѝ ми го безкрай"
     // проверка за успешен удар 
     const isHitPossible = IsMouseDetected && IsBatteryFull && IsHitSuccessful;
 
+    // таск 5
+
     if(isHitPossible){
         alert(`Успешно нанесохте удар`)
-        numberOfAvailableHits = numberOfAvailableHits - 1;
+        numberOfAvailableHits = numberOfAvailableHits - 1; // това може да се запише и така: numberOfAvailableHits--;
+    
+        var upperBoundNumber = 10;
+        while(upperBoundNumber > 0) {
+            alert(upperBoundNumber);
+
+            if (upperBoundNumber % 2 == 0) { // превод "ако числото е четно"
+                alert(`I am a robott ${upperBoundNumber}`);
+            }
+            upperBoundNumber = upperBoundNumber - 1; // това може да се запише и така (декрементация (обратното е ++ (инкрементация))): upperBoundNumber--;
+        }
+        
+        for (var UpperBound = 10; UpperBound > 0; UpperBound--) {                                       // ЦИКЪЛ С БРОЯЧ (старт;крайно условие; стъпка)  най-често се използва за обхождане на масиви
+            alert(upperBoundNumber);
+
+            if (upperBoundNumber % 2 == 0) { // превод "ако числото е четно"
+                alert(`I am a robott ${upperBoundNumber}`);
+        }
+    
     }
 
     // (10 - 5) + 5
@@ -59,7 +93,7 @@ while(isRobotTurnedOn) { // превод "въртѝ ми го безкрай"
     // 0 * 10 -> 0
 
 
-}
+}}
 
 // ============
 
